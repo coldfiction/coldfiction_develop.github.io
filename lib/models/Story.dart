@@ -7,3 +7,12 @@ class Story {
     this.title = title;
   }
 }
+//Story titles
+final stories = <Story>[
+  Story("IDENTITY"),
+  Story("COMING SOON"),
+  Story("COMING SOON"),
+  Story("COMING SOON"),
+  Story("COMING SOON"),
+  Story("COMING SOON"),
+];
