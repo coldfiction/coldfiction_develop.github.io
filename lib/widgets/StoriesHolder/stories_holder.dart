@@ -2,8 +2,6 @@ import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
 
-
-
 //This is a widget that holds the story cards
 class StoriesHolder extends StatelessWidget {
   @override
@@ -12,13 +10,13 @@ class StoriesHolder extends StatelessWidget {
         height: MediaQuery.of(context).size.height,
         width: MediaQuery.of(context).size.width,
         color: Colors.white,
-        padding: const EdgeInsets.all(20),
+        padding: const EdgeInsets.all(50),
         child: Wrap(
           children: _cards(context),
           spacing: 8,
           runSpacing: 8,
           direction: Axis.horizontal,
-          //alignment: WrapAlignment.center,
+          alignment: WrapAlignment.center,
         ));
   }
 
@@ -27,26 +25,38 @@ class StoriesHolder extends StatelessWidget {
     final cards = List<Widget>();
 
     for (var i = 0; i < stories.length; i++) {
-      cards.add(new InkWell(//Ink effect widget
-          onTap: () {},
-          highlightColor: Colors.white.withAlpha(30),
-          splashColor: Colors.white.withAlpha(20),
-          child: Container(// setting the card dimensions
-            height: 250,
-            width: 250,
-            child: Card(//returning a Story card
-              color: Colors.lightGreen[200],
-              child: Center(// center-ing the card text
-                child: Container(//Container for padding
-                  padding: const EdgeInsets.all(2),
-                  child: Text(
-                    stories[i].title,
-                    style: TextStyle(color: Colors.white),
+      cards.add(Container(
+        // setting the card dimensions
+        color: Colors.transparent,
+        height: 250,
+        width: 250,
+        child: Card(
+            //returning a Story card
+            //color: Colors.lightGreen[200], Doing
+            elevation: 9,
+            color: Colors.green[300].withOpacity(0.9),
+            child: Material(
+              color: Colors.transparent,
+              child: InkWell(
+                //Ink effect widget
+                onTap: () {},
+                highlightColor: Colors.green,
+                splashColor: Colors.yellow,
+                child: Center(
+                  // center-ing the card text
+                  child: Container(
+                    //Container for padding
+                    color: Colors.transparent,
+                    padding: const EdgeInsets.all(2),
+                    child: Text(
+                      stories[i].title,
+                      style: TextStyle(color: Colors.white, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),
+                    ),
                   ),
                 ),
               ),
-            ),
-          )));
+            )),
+      ));
     }
 
     return cards;
