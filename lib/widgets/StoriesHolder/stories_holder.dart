@@ -1,32 +1,32 @@
 import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
-import '';
 
 //This is a widget that holds the story cards
 class StoriesHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Stack(
-          children: [
-          Container(
-          color: Colors.white,
+      children: [
+        Container(
+            color: Colors.white,
+            height: MediaQuery.of(context).size.height,
+            width: MediaQuery.of(context).size.width,
+            child: Image(image: AssetImage("assets/background_image.png"))),
+        Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
-          child: Image(image: AssetImage("assets/background_image.png"))),
-          Container(
-        height: MediaQuery.of(context).size.height,
-        width: MediaQuery.of(context).size.width,
-        color: Colors.transparent,
-        padding: const EdgeInsets.all(50),
-        child: Wrap(
-          children: _cards(context),
-          spacing: 8,
-          runSpacing: 8,
-          direction: Axis.horizontal,
-          alignment: WrapAlignment.center,
-        ),
-      )],
+          color: Colors.transparent,
+          padding: const EdgeInsets.all(50),
+          child: Wrap(
+            children: _cards(context),
+            spacing: 8,
+            runSpacing: 8,
+            direction: Axis.horizontal,
+            alignment: WrapAlignment.center,
+          ),
+        )
+      ],
     );
   }
 
