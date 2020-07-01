@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
-import '';
 
 //This is a widget that holds the story cards
 class StoriesHolder extends StatelessWidget {

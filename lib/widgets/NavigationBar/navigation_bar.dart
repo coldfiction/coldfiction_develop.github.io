@@ -11,21 +11,45 @@ class NavigationBar extends StatelessWidget {
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: <Widget>[
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
-              child: Image.asset('assets/logo.png'),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  child: Image.asset('assets/logo.png'),
+                ),
+              ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
-              child: _NavBarItem('Stories'),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  child: _NavBarItem('Stories'),
+                ),
+              ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
-              child: _NavBarItem('Socials'),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  child: _NavBarItem('Socials'),
+                ),
+              ),
             ),
-            SizedBox(
-              width: MediaQuery.of(context).size.width * 0.25,
-              child: _NavBarItem('About'),
+            Material(
+              color: Colors.transparent,
+              child: InkWell(
+                onTap: () {},
+                child: SizedBox(
+                  width: MediaQuery.of(context).size.width * 0.25,
+                  child: _NavBarItem('About'),
+                ),
+              ),
             ),
             // Row(
             //   mainAxisSize: MainAxisSize.max,
@@ -53,9 +77,10 @@ class _NavBarItem extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Text(
+    return Center(
+        child: Text(
       title,
       style: TextStyle(fontSize: 18),
-    );
+    ));
   }
 }
