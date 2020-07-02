@@ -6,56 +6,67 @@ class SocialBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-        color: Colors.green[300],
-        height: 100,
-        width: MediaQuery.of(context).size.width,
-        child: Column(children: <Widget>[
-          Center(
-            child: Text(
-              'Follow us here!',
-              style: TextStyle(
-                  color: Colors.white,
-                  fontSize: 20.0,
-                  fontWeight: FontWeight.bold),
-            ),
-          ),
-          Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () => {
-                      launch('https://www.facebook.com/coldfictionwriters/')
-                    },
-                    child: Image.asset('assets/fb-icon.png'),
+      color: Colors.white,
+      height: 100,
+      width: MediaQuery.of(context).size.width,
+      child:
+          // Center(
+          //   child: Text(
+          //     'Follow us here!',
+          //     style: TextStyle(
+          //         color: Colors.white,
+          //         fontSize: 20.0,
+          //         fontWeight: FontWeight.bold),
+          //   ),
+          // ),
+          CenteredView(
+        // Adds vertical and horizontal padding - refer widgets/center_view.dart
+        child: Row(
+            //Row of social media icons
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: <Widget>[
+              Material(
+                elevation: 9,
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.transparent,
+                child: InkWell(
+                  //Inkwell used only for its onTap property
+                  onTap: () =>
+                      {launch('https://www.facebook.com/coldfictionwriters/')},
+                  child: Image(
+                    image: AssetImage('assets/fb-icon.png'),
                   ),
                 ),
-                Material(
+              ),
+              Material(
+                elevation: 9,
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () =>
+                      {launch('https://www.instagram.com/coldfiction/')},
+                  child: Image.asset('assets/insta-icon.png'),
+                ),
+              ),
+              Material(
+                  elevation: 9,
+                  borderRadius: BorderRadius.circular(100),
                   color: Colors.transparent,
                   child: InkWell(
-                      onTap: () =>
-                          {launch('https://www.instagram.com/coldfiction/')},
-                      child: SizedBox(
-                        width: MediaQuery.of(context).size.width * 0.25,
-                        child: Image.asset('assets/insta-icon.png'),
-                      )),
+                    child: Image.asset('assets/twitter-icon.png'),
+                  )),
+              Material(
+                elevation: 9,
+                borderRadius: BorderRadius.circular(100),
+                color: Colors.transparent,
+                child: InkWell(
+                  onTap: () =>
+                      {launch('https://www.linkedin.com/company/coldfiction/')},
+                  child: Image.asset('assets/linkedin-icon.png'),
                 ),
-                Material(
-                    color: Colors.transparent,
-                    child: InkWell(
-                      child: Image.asset('assets/twitter-icon.png'),
-                    )),
-                Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    onTap: () => {
-                      launch('https://www.linkedin.com/company/coldfiction/')
-                    },
-                    child: Image.asset('assets/linkedin-icon.png'),
-                  ),
-                ),
-              ]),
-        ]));
+              ),
+            ]),
+      ),
+    );
   }
 }
