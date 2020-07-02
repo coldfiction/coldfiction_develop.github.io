@@ -6,19 +6,21 @@ import '../../models/Story.dart';
 class StoriesHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(
+    return Stack(//Setting the quill image to be the background of our wrap widget
       children: [
         Container(
             color: Colors.white,
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.only(left: 100),
+            //The grey quill background image
             child: Image(image: AssetImage("assets/background_image.png"))),
         Container(
           height: MediaQuery.of(context).size.height,
           width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
           padding: const EdgeInsets.all(50),
-          child: Wrap(
+          child: Wrap(// start of the wrap widget
             children: _cards(context),
             spacing: 8,
             runSpacing: 8,
