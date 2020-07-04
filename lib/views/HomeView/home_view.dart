@@ -3,7 +3,7 @@ import 'package:coldfiction/widgets/HomeImage/home_image.dart';
 //import 'package:coldfiction/widgets/NavigationBar/navigation_bar.dart';
 import 'package:coldfiction/widgets/SocialBar/social_bar.dart';
 import 'package:coldfiction/widgets/StoriesHolder/stories_holder.dart';
-//import 'package:coldfiction/widgets/SizeConfig/size_config.dart';
+import 'package:coldfiction/widgets/AboutSection/about-section.dart';
 
 //The homepage
 class HomeView extends StatefulWidget {
@@ -14,13 +14,15 @@ class HomeView extends StatefulWidget {
 }
 
 class HomeViewState extends State<HomeView> {
+  //Start of code to implement anchor links using ScrollController
+
   ScrollController
       _scrollController; //this is used by navbar to jump to anchor links
 
   static double offsetHome = 0;
-  static double offsetStories = 705.0;
+  static double offsetStories = 705.0; //values determined by trial and error
   static double offsetSocial = 855.0;
-  //static double offsetAbout = 3 * SizeConfig.screenHeight;
+  static double offsetAbout = 1205.0;
 
   @override
   void initState() {
@@ -46,6 +48,9 @@ class HomeViewState extends State<HomeView> {
       case "Socials":
         offset = offsetSocial;
         break;
+      case "About":
+        offset = offsetAbout;
+        break;
     }
 
     _scrollController.animateTo(
@@ -54,6 +59,8 @@ class HomeViewState extends State<HomeView> {
       curve: Curves.easeInOutQuart,
     );
   }
+
+  //End of code to implement anchor links using ScrollController
 
   @override
   Widget build(BuildContext context) {
@@ -73,80 +80,75 @@ class HomeViewState extends State<HomeView> {
                 ),
                 StoriesHolder(),
                 SocialBar(),
+                AboutSection(),
               ],
             ),
             //),
             Container(
               alignment: Alignment.topCenter,
-              child: Opacity(
-                opacity: 50.0,
-                child: Container(
-                  height: 50,
-                  color: Colors.green[300].withOpacity(0.4),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: <Widget>[
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () => scrollTo("Home"),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            child: Image.asset('assets/logo.png'),
-                          ),
+              child: Container(
+                //**********************IMPORTANT: This widget represents the Navigation Bar
+                height: 50,
+                color: Colors.green[300].withOpacity(0.4),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Material(
+                      //Home Button on navbar
+                      color: Colors.transparent,
+                      child: InkWell(
+                        //Inkwell for splash effect and onTap property
+                        onTap: () => scrollTo("Home"),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: Image.asset('assets/logo.png'),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () => scrollTo("Stories"),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            child: _NavBarItem('Stories'),
-                          ),
+                    ),
+                    Material(
+                      //Stories button on navbar
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => scrollTo("Stories"),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: _NavBarItem('Stories'),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () => scrollTo("Socials"),
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            child: _NavBarItem('Socials'),
-                          ),
+                    ),
+                    Material(
+                      //Socials Button on navbar
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => scrollTo("Socials"),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: _NavBarItem('Socials'),
                         ),
                       ),
-                      Material(
-                        color: Colors.transparent,
-                        child: InkWell(
-                          onTap: () {},
-                          child: SizedBox(
-                            width: MediaQuery.of(context).size.width * 0.25,
-                            child: _NavBarItem('About'),
-                          ),
+                    ),
+                    Material(
+                      //About button on navbar
+                      color: Colors.transparent,
+                      child: InkWell(
+                        onTap: () => scrollTo("About"),
+                        child: SizedBox(
+                          width: MediaQuery.of(context).size.width * 0.25,
+                          child: _NavBarItem('About'),
                         ),
                       ),
-                      // Row(
-                      //   mainAxisSize: MainAxisSize.max,
-                      //   children: <Widget>[
-                      //     _NavBarItem('Stories'),
-                      //     SizedBox(
-                      //       width: 60,
-                      //     ),
-                      //     _NavBarItem('About'),
-                      //   ],
-                      // )
-                    ],
-                  ),
+                    ),
+                  ],
                 ),
-              ), //NavigationBar(),
-            )
+              ),
+            ), //NavigationBar(), //**********************************IMPORTANT: End of Navigation Bar widget
           ],
         ));
   }
 }
 
 class _NavBarItem extends StatelessWidget {
+  //Class to store properties of navbar item
   final String title;
   const _NavBarItem(
     this.title, {
@@ -158,7 +160,9 @@ class _NavBarItem extends StatelessWidget {
     return Center(
         child: Text(
       title,
-      style: TextStyle(fontSize: 18),
+      style: TextStyle(
+        fontSize: 24,
+      ),
     ));
   }
 }

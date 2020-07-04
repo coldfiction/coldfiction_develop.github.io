@@ -1,12 +1,14 @@
 import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //This is a widget that holds the story cards
 class StoriesHolder extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
-    return Stack(//Setting the quill image to be the background of our wrap widget
+    return Stack(
+      //Setting the quill image to be the background of our wrap widget
       children: [
         Container(
             color: Colors.white,
@@ -20,7 +22,8 @@ class StoriesHolder extends StatelessWidget {
           width: MediaQuery.of(context).size.width,
           color: Colors.transparent,
           padding: const EdgeInsets.all(50),
-          child: Wrap(// start of the wrap widget
+          child: Wrap(
+            // start of the wrap widget
             children: _cards(context),
             spacing: 8,
             runSpacing: 8,
@@ -63,9 +66,11 @@ class StoriesHolder extends StatelessWidget {
                     child: Text(
                       stories[i].title,
                       style: TextStyle(
-                          color: Colors.white,
-                          fontStyle: FontStyle.italic,
-                          fontWeight: FontWeight.bold),
+                        color: Colors.white,
+                        //fontStyle: FontStyle.italic,
+                        //fontWeight: FontWeight.bold,
+                        fontSize: 25,
+                      ),
                     ),
                   ),
                 ),
