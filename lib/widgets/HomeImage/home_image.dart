@@ -9,7 +9,7 @@ class HomeImage extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       decoration: BoxDecoration(
         image: DecorationImage(
-          image: AssetImage("assets/pufferspondpic1.jpg"),
+          image: AssetImage("assets/fall-pic.jpg"),
           fit: BoxFit.cover,
         ),
       ),

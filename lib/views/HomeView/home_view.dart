@@ -89,7 +89,8 @@ class HomeViewState extends State<HomeView> {
               child: Container(
                 //**********************IMPORTANT: This widget represents the Navigation Bar
                 height: 50,
-                color: Colors.green[300].withOpacity(0.4),
+                //color: Colors.green[300].withOpacity(0.4),
+                color: Color(0xffb34233).withOpacity(0.4),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[

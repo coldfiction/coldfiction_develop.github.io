@@ -42,40 +42,48 @@ class StoriesHolder extends StatelessWidget {
     for (var i = 0; i < stories.length; i++) {
       cards.add(Container(
         // setting the card dimensions
-        color: Colors.transparent,
+        //color: Colors.transparent,
         height: 250,
         width: 250,
         child: Card(
             //returning a Story card
             //color: Colors.lightGreen[200], Doing
             elevation: 9,
-            color: Colors.green[300].withOpacity(0.9),
-            child: Material(
-              color: Colors.transparent,
-              child: InkWell(
-                //Ink effect widget
-                onTap: () {},
-                highlightColor: Colors.green,
-                splashColor: Colors.yellow,
-                child: Center(
-                  // center-ing the card text
-                  child: Container(
-                    //Container for padding
-                    color: Colors.transparent,
-                    padding: const EdgeInsets.all(2),
-                    child: Text(
-                      stories[i].title,
-                      style: TextStyle(
-                        color: Colors.white,
-                        //fontStyle: FontStyle.italic,
-                        //fontWeight: FontWeight.bold,
-                        fontSize: 25,
+            //color: Colors.green[300].withOpacity(0.9),
+            child: Container(
+                decoration: BoxDecoration(
+                  gradient: LinearGradient(colors: [
+                    Color(0xffb34233),
+                    Color(0xffd28f33),
+                    Color(0xffd4b95e),
+                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
+                ),
+                child: Material(
+                  color: Colors.transparent,
+                  child: InkWell(
+                    //Ink effect widget
+                    onTap: () {},
+                    highlightColor: Colors.green,
+                    splashColor: Colors.white,
+                    child: Center(
+                      // center-ing the card text
+                      child: Container(
+                        //Container for padding
+                        color: Colors.transparent,
+                        padding: const EdgeInsets.all(2),
+                        child: Text(
+                          stories[i].title,
+                          style: TextStyle(
+                            color: Colors.white,
+                            //fontStyle: FontStyle.italic,
+                            //fontWeight: FontWeight.bold,
+                            fontSize: 25,
+                          ),
+                        ),
                       ),
                     ),
                   ),
-                ),
-              ),
-            )),
+                ))),
       ));
     }
 
