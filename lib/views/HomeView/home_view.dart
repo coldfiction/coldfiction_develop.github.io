@@ -4,6 +4,7 @@ import 'package:coldfiction/widgets/HomeImage/home_image.dart';
 import 'package:coldfiction/widgets/SocialBar/social_bar.dart';
 import 'package:coldfiction/widgets/StoriesHolder/stories_holder.dart';
 import 'package:coldfiction/widgets/AboutSection/about-section.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 //The homepage
 class HomeView extends StatefulWidget {
@@ -69,6 +70,29 @@ class HomeViewState extends State<HomeView> {
         body: Stack(
           children: <Widget>[
             HomeImage(), //The background image
+            Container(
+              height: MediaQuery.of(context).size.height,
+              width: MediaQuery.of(context).size.width,
+              //color: Color(0xffd4b95e).withOpacity(0.4),
+              color: Colors.black.withOpacity(0.3),
+            ),
+            Container(
+                color: Colors.transparent,
+                // height: MediaQuery.of(context).size.height,
+                // width: MediaQuery.of(context).size.width,
+                alignment: Alignment.center,
+                // child: Text("ColdFiction",
+                //     style: GoogleFonts.mrDeHaviland(
+                //       textStyle: TextStyle(
+                //           color: Color(0xffb34233),
+                //           backgroundColor: Colors.black,
+                //           fontSize: 300),
+                //       //backgroundColor: Color(0xffd4b95e).withOpacity(0.5),
+                //     )),
+                child: Image(
+                  image: AssetImage('assets/coldfiction-written.png'),
+                )),
+
             // CenteredView(child:
             ListView(
               controller: _scrollController,

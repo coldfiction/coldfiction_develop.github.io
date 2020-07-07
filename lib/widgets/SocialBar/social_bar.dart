@@ -53,6 +53,7 @@ class SocialBar extends StatelessWidget {
                   borderRadius: BorderRadius.circular(100),
                   color: Colors.transparent,
                   child: InkWell(
+                    onTap: () => {launch('https://twitter.com/cold_fiction')},
                     child: Image.asset('assets/twitter-icon.png'),
                   )),
               Material(
