@@ -4,6 +4,10 @@ class AboutSection extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsets.only(
+        top: (MediaQuery.of(context).size.height) / 20,
+        bottom: (MediaQuery.of(context).size.height) / 20,
+      ),
       color: Colors.white,
       height: 350,
       width: MediaQuery.of(context).size.width,
