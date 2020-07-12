@@ -1,3 +1,4 @@
+import 'package:coldfiction/views/StoryDisplayView/story_display_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
@@ -95,7 +96,9 @@ class StoriesHolder extends StatelessWidget {
                   color: Colors.transparent,
                   child: InkWell(
                     //Ink effect widget
-                    onTap: () {},
+                    onTap: (){
+                      _navigate_to_story(stories[i],context);
+                    },
                     // highlightColor: Colors.green,
                     // splashColor: Colors.white,
                     child: Center(
@@ -119,5 +122,13 @@ class StoriesHolder extends StatelessWidget {
     }
 
     return cards;
+  }
+
+  _navigate_to_story(Story story, BuildContext context){
+    if(story.title != "Coming Soon"){
+      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
+            return StoryDisplayView(story);
+      }));
+    }
   }
 }
