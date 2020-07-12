@@ -4,7 +4,9 @@ import 'package:coldfiction/widgets/HomeImage/home_image.dart';
 import 'package:coldfiction/widgets/SocialBar/social_bar.dart';
 import 'package:coldfiction/widgets/StoriesHolder/stories_holder.dart';
 import 'package:coldfiction/widgets/AboutSection/about-section.dart';
-import 'package:google_fonts/google_fonts.dart';
+
+//Sea green and blue colors used in this site (light to dark): #1fbfb8, #05716c, #1978a5, #031163
+//Website used (#31 bullet): https://99designs.com/blog/creative-inspiration/color-combinations/
 
 //The homepage
 class HomeView extends StatefulWidget {
@@ -114,7 +116,8 @@ class HomeViewState extends State<HomeView> {
                 //**********************IMPORTANT: This widget represents the Navigation Bar
                 height: 50,
                 //color: Colors.green[300].withOpacity(0.4),
-                color: Color(0xffb34233).withOpacity(0.4),
+                color: Color(0xff05716c).withOpacity(
+                    0.4), //Read comment at the start of the code to leanr about colors
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: <Widget>[
