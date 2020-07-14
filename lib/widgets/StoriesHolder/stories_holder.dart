@@ -2,10 +2,24 @@ import 'package:coldfiction/views/StoryDisplayView/story_display_view.dart';
 import 'package:flutter/material.dart';
 
 import '../../models/Story.dart';
-import 'package:google_fonts/google_fonts.dart';
 
 //This is a widget that holds the story cards
-class StoriesHolder extends StatelessWidget {
+class StoriesHolder extends StatefulWidget {
+  @override
+  _StoriesHolderState createState() => _StoriesHolderState();
+}
+
+class _StoriesHolderState extends State<StoriesHolder> {
+  //Start of code for carousel
+  PageController pageController;
+
+  @override
+  void initState() {
+    super.initState();
+
+    pageController = PageController(initialPage: 1, viewportFraction: 0.8);
+  }
+
   @override
   Widget build(BuildContext context) {
     return Stack(
@@ -13,22 +27,24 @@ class StoriesHolder extends StatelessWidget {
       children: [
         Container(
             color: Colors.white,
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height * 0.8,
             width: MediaQuery.of(context).size.width,
             // padding: const EdgeInsets.only(left: 100),
             //The grey quill background image
             padding: const EdgeInsets.only(bottom: 30),
             child: Image(image: AssetImage("assets/background_image.png"))),
         Container(
-            height: MediaQuery.of(context).size.height,
+            height: MediaQuery.of(context).size.height * 0.8,
             // width: MediaQuery.of(context).size.width,
             color: Colors.transparent,
             padding: EdgeInsets.only(
-                // bottom: (MediaQuery.of(context).size.height) / 20,
-                left: (MediaQuery.of(context).size.width) *
-                    0.2, // This is for the padding to resize according to screen
-                right: (MediaQuery.of(context).size.width) *
-                    0.2), // This is for the padding to resize according to screen
+              left: MediaQuery.of(context).size.width > 1000
+                  ? 400
+                  : 50, //First value for desktop second for mobile view
+              right: MediaQuery.of(context).size.width > 1000
+                  ? 400
+                  : 50, // values found by trial and error
+            ),
             //DEBUG      // child: Wrap(
             //   // start of the wrap widget
             //   children: _cards(context),
@@ -50,29 +66,39 @@ class StoriesHolder extends StatelessWidget {
                       style: TextStyle(fontSize: 40),
                     )),
                 Container(
-                  height: (MediaQuery.of(context).size.height) *
-                      0.78, //manually calculated the height the grid must have and removed bottom padding- fixed scrolling issue
-                  child: new GridView.count(
-                    primary: false,
-                    padding: const EdgeInsets.all(3.5),
-                    crossAxisCount: 2,
-                    childAspectRatio: (MediaQuery.of(context).size.width) /
-                        (MediaQuery.of(context).size.height),
-                    mainAxisSpacing: 8.0,
-                    crossAxisSpacing: 8.0,
-                    children: _cards(context), //new Cards()
-                    shrinkWrap: true,
-                    scrollDirection: Axis.vertical,
-                    physics: ScrollPhysics(),
-                  ),
-                ),
+                    color: Colors.white,
+                    height: (MediaQuery.of(context).size.height) *
+                        0.6, //manually calculated the height the grid must have and removed bottom padding- fixed scrolling issue
+                    //DEBUG Original gridView // child: new GridView.count(
+                    //   primary: false,
+                    //   padding: const EdgeInsets.all(3.5),
+                    //   crossAxisCount: 1,
+                    //   // childAspectRatio: (MediaQuery.of(context).size.width) /
+                    //   //     (MediaQuery.of(context).size.height),
+                    //   childAspectRatio: 1.0,
+                    //   mainAxisSpacing: 8.0,
+                    //   crossAxisSpacing: 8.0,
+                    //   children: _cards(context), //new Cards()
+                    //   shrinkWrap: true,
+                    //   scrollDirection: Axis.horizontal,
+                    //   physics: ScrollPhysics(),
+                    // ),
+                    //DEBUG ListView // child: ListView(
+                    //   children: _cards(context),
+                    //   scrollDirection: Axis.horizontal,
+                    // )),
+                    child: PageView.builder(
+                        controller: pageController,
+                        itemCount: stories.length,
+                        itemBuilder: (context, position) {
+                          return imageSlider(position);
+                        }))
               ],
             )),
       ],
     );
   }
 
-  //Method to return a list of card (inside a size restricting container) widgets to store the story name
   List<Widget> _cards(BuildContext context) {
     final cards = List<Widget>();
 
@@ -81,54 +107,78 @@ class StoriesHolder extends StatelessWidget {
         // setting the card dimensions
         color: Colors.transparent,
         child: Card(
-
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.circular(5.0),
+            ),
             //returning a Story card
             elevation: 9,
             child: Container(
-                decoration: BoxDecoration(
-                  gradient: LinearGradient(colors: [
-                    Color(0xffb34233).withOpacity(0.9),
-                    Color(0xffd28f33).withOpacity(0.9),
-                    Color(0xffd4b95e).withOpacity(0.9),
-                  ], begin: Alignment.topLeft, end: Alignment.bottomRight),
-                ),
                 child: Material(
-                  color: Colors.transparent,
-                  child: InkWell(
-                    //Ink effect widget
-                    onTap: (){
-                      _navigate_to_story(stories[i],context);
-                    },
-                    // highlightColor: Colors.green,
-                    // splashColor: Colors.white,
-                    child: Center(
-                      // center-ing the card text
-                      child: Container(
-                        //Container for padding
-                        color: Colors.transparent,
-                        padding: const EdgeInsets.all(2),
-                        child: Text(
-                          stories[i].title,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 25,
-                          ),
-                        ),
-                      ),
-                    ),
-                  ),
-                ))),
+              color: Colors.transparent,
+              child: InkWell(
+                  //Ink effect widget
+                  onTap: () {
+                    _navigate_to_story(stories[i], context);
+                  },
+                  //DEBUG // child: Center(
+                  //   // center-ing the card text
+                  //   child: Container(
+                  //     //Container for padding
+                  //     color: Colors.transparent,
+                  //     padding: const EdgeInsets.all(2),
+                  //     child: Text(
+                  //       stories[i].title,
+                  //       style: TextStyle(
+                  //         color: Colors.white,
+                  //         fontSize: 25,
+                  //       ),
+                  //     ),
+                  //   ),
+                  // ),
+                  child: FittedBox(
+                    child: stories[i].image,
+                    fit: BoxFit.fill,
+                  )),
+            ))),
       ));
     }
 
     return cards;
   }
 
-  _navigate_to_story(Story story, BuildContext context){
-    if(story.title != "Coming Soon"){
-      Navigator.of(context).push(MaterialPageRoute(builder: (BuildContext context){
-            return StoryDisplayView(story);
+  _navigate_to_story(Story story, BuildContext context) {
+    if (story.title != "Coming Soon") {
+      Navigator.of(context)
+          .push(MaterialPageRoute(builder: (BuildContext context) {
+        return StoryDisplayView(story);
       }));
     }
+  }
+
+  imageSlider(int index) {
+    return AnimatedBuilder(
+      animation: pageController,
+      builder: (context, widget) {
+        double value = 1;
+        if (pageController.position.haveDimensions) {
+          value = pageController.page - index;
+          value = (1 - (value.abs() * 0.3)).clamp(0.0, 1.0);
+        }
+
+        return Center(
+          child: SizedBox(
+            height: Curves.easeInOut.transform(value) * 400,
+            // MediaQuery.of(context).size.height *
+            // (2.0 / 3),
+            width: Curves.easeInOut.transform(value) * 600,
+            // MediaQuery.of(context).size.width *
+            // (8.0 / 11.6),
+            child: widget,
+          ),
+        );
+      },
+      child:
+          Container(margin: EdgeInsets.all(10), child: _cards(context)[index]),
+    );
   }
 }

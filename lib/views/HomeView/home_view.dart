@@ -24,8 +24,8 @@ class HomeViewState extends State<HomeView> {
 
   static double offsetHome = 0;
   static double offsetStories = 705.0; //values determined by trial and error
-  static double offsetSocial = 855.0;
-  static double offsetAbout = 1205.0;
+  static double offsetSocial = 745.0;
+  static double offsetAbout = 1052.0;
 
   @override
   void initState() {
