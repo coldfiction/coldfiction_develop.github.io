@@ -6,12 +6,16 @@ class HomeImage extends StatelessWidget {
     return Container(
       height: MediaQuery.of(context).size.height,
       width: MediaQuery.of(context).size.width,
-      decoration: BoxDecoration(
-        image: DecorationImage(
-          image: AssetImage("assets/blue-sunset.jpg"),
-          fit: BoxFit.cover,
-        ),
+      child: Image.network(
+        "assets/blue-sunset.jpg",
+        fit: BoxFit.cover,
       ),
+      // decoration: BoxDecoration(
+      //   image: DecorationImage(
+      //     image: Image.network("assets/blue-sunset.jpg", fit: BoxFit.cover,),
+      //     fit: BoxFit.cover,
+      //   ),
+      // ),
     );
   }
 }

@@ -10,7 +10,7 @@ class StoriesHolder extends StatefulWidget {
 }
 
 class _StoriesHolderState extends State<StoriesHolder> {
-  //Start of code for carousel
+  //Start of code for  card carousel
   PageController pageController;
 
   @override
@@ -20,6 +20,7 @@ class _StoriesHolderState extends State<StoriesHolder> {
     pageController = PageController(initialPage: 1, viewportFraction: 0.8);
   }
 
+//end of inital code for cards carousel
   @override
   Widget build(BuildContext context) {
     return Stack(

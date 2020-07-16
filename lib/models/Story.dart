@@ -13,16 +13,16 @@ class Story {
 
 //Story titles
 final stories = <Story>[
-  Story("Identity", "",
-      Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
-  Story("Coming Soon", "",
-      Image(image: AssetImage('assets/identity-card-pic.png'))),
-  Story("Coming Soon", "",
-      Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
-  Story("Coming Soon", "",
-      Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
-  Story("Coming Soon", "",
-      Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
-  Story("Coming Soon", "",
-      Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
+  Story("Identity", "", Image.network('assets/garbutrol-card-pic.png')),
+  // Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
+  Story("Coming Soon", "", Image.network('assets/identity-card-pic.png')),
+  // Image(image: AssetImage('assets/identity-card-pic.png'))),
+  Story("Coming Soon", "", Image.network('assets/garbutrol-card-pic.png')),
+  // Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
+  Story("Coming Soon", "", Image.network('assets/garbutrol-card-pic.png')),
+  // Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
+  Story("Coming Soon", "", Image.network('assets/garbutrol-card-pic.png')),
+  // Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
+  Story("Coming Soon", "", Image.network('assets/garbutrol-card-pic.png')),
+  // Image(image: AssetImage('assets/garbutrol-card-pic.png'))),
 ];
