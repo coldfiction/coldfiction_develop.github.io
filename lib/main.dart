@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 import 'views/HomeView/home_view.dart';
 
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
       title: 'ColdFiction',
       theme: ThemeData(
           visualDensity: VisualDensity.adaptivePlatformDensity,
-          fontFamily: 'StayWriter'),
+          textTheme: GoogleFonts.justAnotherHandTextTheme(
+            Theme.of(context).textTheme,
+          )),
       home: HomeView(),
     );
   }

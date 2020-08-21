@@ -6,7 +6,18 @@ class SocialBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color: Colors.white,
+      decoration: BoxDecoration(
+          gradient: LinearGradient(
+        colors: [
+          Color(0xff1fbfb8),
+          Color(0xff05716c),
+          Color(0xff1978a5),
+          // Color(0xff031163)
+        ],
+        begin: Alignment.centerLeft,
+        end: Alignment.centerRight,
+      )),
+      // color: Colors.white,
       height: 100,
       width: MediaQuery.of(context).size.width,
       child:

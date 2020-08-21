@@ -27,13 +27,25 @@ class _StoriesHolderState extends State<StoriesHolder> {
       //Setting the quill image to be the background of our wrap widget
       children: [
         Container(
-            color: Colors.white,
-            height: MediaQuery.of(context).size.height * 0.8,
-            width: MediaQuery.of(context).size.width,
-            // padding: const EdgeInsets.only(left: 100),
-            //The grey quill background image
-            padding: const EdgeInsets.only(bottom: 30),
-            child: Image(image: AssetImage("assets/background_image.png"))),
+          // color: Colors.white,
+          height: MediaQuery.of(context).size.height * 0.8,
+          width: MediaQuery.of(context).size.width,
+          // padding: const EdgeInsets.only(left: 100),
+          //The grey quill background image
+          padding: const EdgeInsets.only(bottom: 30),
+          // child: Image(image: AssetImage("assets/background_image.png"))
+          decoration: BoxDecoration(
+              gradient: LinearGradient(
+            colors: [
+              Color(0xff1fbfb8),
+              Color(0xff05716c),
+              Color(0xff1978a5),
+              // Color(0xff031163)
+            ],
+            begin: Alignment.centerLeft,
+            end: Alignment.centerRight,
+          )),
+        ),
         Container(
             height: MediaQuery.of(context).size.height * 0.8,
             // width: MediaQuery.of(context).size.width,
@@ -57,7 +69,7 @@ class _StoriesHolderState extends State<StoriesHolder> {
             child: Column(
               children: [
                 Container(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     alignment: Alignment.topCenter,
                     padding: EdgeInsets.only(
                       top: (MediaQuery.of(context).size.height) / 20,
@@ -67,7 +79,7 @@ class _StoriesHolderState extends State<StoriesHolder> {
                       style: TextStyle(fontSize: 40),
                     )),
                 Container(
-                    color: Colors.white,
+                    color: Colors.transparent,
                     height: (MediaQuery.of(context).size.height) *
                         0.6, //manually calculated the height the grid must have and removed bottom padding- fixed scrolling issue
                     //DEBUG Original gridView // child: new GridView.count(
@@ -109,10 +121,10 @@ class _StoriesHolderState extends State<StoriesHolder> {
         color: Colors.transparent,
         child: Card(
             shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(5.0),
+              borderRadius: BorderRadius.circular(30.0),
             ),
             //returning a Story card
-            elevation: 9,
+            elevation: 15,
             child: Container(
                 child: Material(
               color: Colors.transparent,
